@@ -1,16 +1,11 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  class salesProduct extends Model {
-  }
-  salesProduct.init({
-    saleId: {
+const salesProduct = sequelize.define('salesProduct', {
+    sale_id: {
       type: DataTypes.NUMBER,
       primaryKey: true
     },
-    productId: {
+    product_id: {
       type: DataTypes.NUMBER,
       primaryKey: true
     },
@@ -19,7 +14,22 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'salesProduct',
     timestamps: false,
-    underscored: true
   });
+
+  salesProduct.associate = (models) => {
+    models.sale.belongsToMany(models.product, {
+      through: salesProduct,
+      as: 'sales',
+      foreignKey: 'sale_id',
+      otherKey: 'product_id',
+    });
+    models.product.belongsToMany(models.sale, {
+      through: salesProduct,
+      as: 'products',
+      foreignKey: 'product_id',
+      otherKey: 'sale_id',
+    });
+
+  }
   return salesProduct;
 };

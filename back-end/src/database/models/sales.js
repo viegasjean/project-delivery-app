@@ -1,11 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class sales extends Model {
-  }
-  sales.init({
+  const sales = sequelize.define('sale', {
     sellerId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     totalPrice: DataTypes.DECIMAL,
@@ -19,5 +13,19 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     underscored: true
   });
+
+  sales.associate = (models) => {
+    sales.belongsTo(models.user, {
+      as: 'seller',
+      foreignKey: 'seller_id',
+      otherKey: 'id',
+    })
+    sales.belongsTo(models.user, {
+      as: 'user',
+      foreignKey: 'user_id',
+      otherKey: 'id',
+    })
+  }
+
   return sales;
 };
