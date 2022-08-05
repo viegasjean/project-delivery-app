@@ -11,6 +11,18 @@ const login = async (req, res, next) => {
   }
 };
 
+const create = async (req, res, next) => {
+  try {
+    const { email, password, name, role } = req.body;
+    await service.create({ email, password, name, role });
+
+    return res.status(201).json({ message: 'User created successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   login,
+  create,
 };
