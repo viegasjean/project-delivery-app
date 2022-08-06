@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
+h1 {
+  font-size: 48px;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 10px;
+  text-align: center;
+}
+
+form {
+  width: 20%;
+  margin-left : 40%;
+  margin-top: 50px;
+  background-color: #e6ffe6;
+  padding: 15px;
+}
+
+
+.login-btn {
+  width: 100%;
+}
+
+.invalid-text {
+  text-align: center;
+  color: red;
+}
