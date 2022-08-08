@@ -5,7 +5,7 @@ const JWT = require('../utils/jwtHandler');
 
 const login = async ({ email, password }) => {
   const dbUser = await model.findOne({ where: { email } });
-  
+
   if (!dbUser) throw new ErrorHandler(400, 'User email or password is incorrect');
   const passwordHash = md5(password);
 
@@ -15,7 +15,14 @@ const login = async ({ email, password }) => {
 
   const token = new JWT().generateToken({ name: dbUser.name, email, role: dbUser.role });
 
-  return token;
+  return {
+    userData: {
+      name: dbUser.name,
+      email: dbUser.email,
+      role: dbUser.role,
+    },
+    token,
+  };
 };
 
 const create = async (data) => {
