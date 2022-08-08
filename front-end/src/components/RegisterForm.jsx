@@ -52,8 +52,8 @@ function RegisterForm() {
               name="name"
               data-test-id="common_register__input-name"
               placeholder="Nome Completo"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={ name }
+              onChange={ (e) => setName(e.target.value) }
               className="input"
             />
           </div>
@@ -68,8 +68,8 @@ function RegisterForm() {
               name="email"
               data-test-id="common_register__input-email"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={ email }
+              onChange={ (e) => setEmail(e.target.value) }
               className="input"
             />
           </div>
@@ -84,8 +84,8 @@ function RegisterForm() {
               name="password"
               data-test-id="common_register__input-password"
               placeholder="Senha"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={ password }
+              onChange={ (e) => setPassword(e.target.value) }
               className="input"
             />
           </div>
@@ -95,8 +95,8 @@ function RegisterForm() {
         <button
           type="button"
           data-test-id="common_register__button-register"
-          disabled={disabled}
-          onClick={register}
+          disabled={ disabled }
+          onClick={ register }
           className="button is-primary login-btn"
         >
           Cadastrar

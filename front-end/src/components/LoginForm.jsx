@@ -47,8 +47,8 @@ function LoginForm() {
               name="email"
               data-test-id="common_login__input-email"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={ email }
+              onChange={ (e) => setEmail(e.target.value) }
               className="input"
             />
           </div>
@@ -62,8 +62,8 @@ function LoginForm() {
             name="password"
             data-test-id="common_login__input-password"
             placeholder="Senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={ password }
+            onChange={ (e) => setPassword(e.target.value) }
             className="input"
           />
         </label>
@@ -72,8 +72,8 @@ function LoginForm() {
         <button
           type="button"
           data-test-id="common_login__button-login"
-          disabled={disabled}
-          onClick={login}
+          disabled={ disabled }
+          onClick={ login }
           className="button is-primary login-btn"
         >
           Login
