@@ -17,7 +17,7 @@ async function fetchLogin(data) {
 
 async function fetchRegister(data) {
   try {
-    const response = await fetch(`${url}/register`, {
+    const response = await fetch(`${url}/user/register`, {
       method: 'post',
       body: JSON.stringify(data),
     });
