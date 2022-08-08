@@ -16,7 +16,7 @@ function RoleRedirection() {
       setRoute('/seller/orders');
       setRedirect(true);
     }
-    if (role === 'admin') {
+    if (role === 'administrator') {
       setRoute('/admin/manage');
       setRedirect(true);
     }
