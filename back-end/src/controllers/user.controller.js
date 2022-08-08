@@ -4,7 +4,7 @@ const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const response = await service.login({ email, password });
-
+    console.log(req.body);
     return res.status(200).json({ ...response });
   } catch (error) {
     next(error);

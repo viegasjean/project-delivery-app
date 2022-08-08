@@ -3,6 +3,9 @@ const url = 'http://localhost:3001';
 async function fetchLogin(data) {
   try {
     const response = await fetch(`${url}/user/login`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
       method: 'post',
       body: JSON.stringify(data),
     });
@@ -18,6 +21,9 @@ async function fetchLogin(data) {
 async function fetchRegister(data) {
   try {
     const response = await fetch(`${url}/user/register`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
       method: 'post',
       body: JSON.stringify(data),
     });
