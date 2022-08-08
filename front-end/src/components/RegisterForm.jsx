@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import MyContext from '../context/context';
 import { minName, emailRegex, minPass, created } from '../services/constants';
+import { fetchRegister } from '../services/fetch';
 
 function RegisterForm() {
   const [name, setName] = useState('');
@@ -9,12 +11,17 @@ function RegisterForm() {
   const [disabled, setDisabled] = useState(true);
   const [error, setError] = useState(false);
   const [errMsg, setErrMsg] = useState('');
+  const { setRole } = useContext(MyContext);
 
   const register = async () => {
-    const data = { name, email, password };
+    const data = { name, email, password, role: 'customer' };
     const { status, responseData } = await fetchRegister(data);
     if (status === created) {
       localStorage.setItem('token', responseData.token);
+      localStorage.setItem('name', data.name);
+      localStorage.setItem('email', data.email);
+      localStorage.setItem('role', data.role);
+      setRole(data.role);
     } else {
       setError(true);
       setErrMsg(responseData.message);

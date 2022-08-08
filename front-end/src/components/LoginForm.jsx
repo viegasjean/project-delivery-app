@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchLogin } from '../services/fetch';
 import { emailRegex, minPass, okCode } from '../services/constants';
+import MyContext from '../context/context';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
@@ -9,12 +10,17 @@ function LoginForm() {
   const [disabled, setDisabled] = useState(true);
   const [error, setError] = useState(false);
   const [errMsg, setErrMsg] = useState('');
+  const { setRole } = useContext(MyContext);
 
   const login = async () => {
     const data = { email, password };
     const { status, responseData } = await fetchLogin(data);
     if (status === okCode) {
       localStorage.setItem('token', responseData.token);
+      localStorage.setItem('name', responseData.userData.name);
+      localStorage.setItem('email', responseData.userData.email);
+      localStorage.setItem('role', responseData.userData.role);
+      setRole(responseData.userData.role);
     } else {
       setError(true);
       setErrMsg(responseData.message);
