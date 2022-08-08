@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchLogin } from '../services/fetch';
 import { emailRegex, minPass, okCode } from '../services/constants';
+import { setKey } from '../services/localStorage';
 import MyContext from '../context/context';
 
 function LoginForm() {
@@ -16,10 +17,10 @@ function LoginForm() {
     const data = { email, password };
     const { status, responseData } = await fetchLogin(data);
     if (status === okCode) {
-      localStorage.setItem('token', responseData.token);
-      localStorage.setItem('name', responseData.userData.name);
-      localStorage.setItem('email', responseData.userData.email);
-      localStorage.setItem('role', responseData.userData.role);
+      setKey('token', responseData.token);
+      setKey('name', responseData.userData.name);
+      setKey('email', responseData.userData.email);
+      setKey('role', responseData.userData.role);
       setRole(responseData.userData.role);
     } else {
       setError(true);

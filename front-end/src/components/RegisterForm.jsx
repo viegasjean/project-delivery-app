@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import MyContext from '../context/context';
 import { minName, emailRegex, minPass, created } from '../services/constants';
 import { fetchRegister } from '../services/fetch';
+import { setKey } from '../services/localStorage';
 
 function RegisterForm() {
   const [name, setName] = useState('');
@@ -17,10 +18,10 @@ function RegisterForm() {
     const data = { name, email, password, role: 'customer' };
     const { status, responseData } = await fetchRegister(data);
     if (status === created) {
-      localStorage.setItem('token', responseData.token);
-      localStorage.setItem('name', data.name);
-      localStorage.setItem('email', data.email);
-      localStorage.setItem('role', data.role);
+      setKey('token', responseData.token);
+      setKey('name', data.name);
+      setKey('email', data.email);
+      setKey('role', data.role);
       setRole(data.role);
     } else {
       setError(true);
