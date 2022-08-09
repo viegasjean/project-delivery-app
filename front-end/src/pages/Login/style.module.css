@@ -1,0 +1,25 @@
+.container {
+  margin: 0 auto;
+  width: 300px;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.container form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.container form label input {
+  padding: 0.5rem;
+}
