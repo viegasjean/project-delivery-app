@@ -45,7 +45,7 @@ function LoginForm() {
             <input
               type="email"
               name="email"
-              data-test-id="common_login__input-email"
+              data-testid="common_login__input-email"
               placeholder="Email"
               value={ email }
               onChange={ (e) => setEmail(e.target.value) }
@@ -60,7 +60,7 @@ function LoginForm() {
           <input
             type="password"
             name="password"
-            data-test-id="common_login__input-password"
+            data-testid="common_login__input-password"
             placeholder="Senha"
             value={ password }
             onChange={ (e) => setPassword(e.target.value) }
@@ -71,7 +71,7 @@ function LoginForm() {
       <div className="field">
         <button
           type="button"
-          data-test-id="common_login__button-login"
+          data-testid="common_login__button-login"
           disabled={ disabled }
           onClick={ login }
           className="button is-primary login-btn"
@@ -82,7 +82,7 @@ function LoginForm() {
       <div className="field">
         <Link
           to="/register"
-          data-test-id="common_login__button-register"
+          data-testid="common_login__button-register"
           className="button login-btn"
         >
           Ainda não tenho conta
@@ -92,7 +92,7 @@ function LoginForm() {
         <div className="block">
           <p
             className="invalid-text"
-            data-test-id="common_login__element-invalid-email"
+            data-testid="common_login__element-invalid-email"
           >
             {errMsg}
           </p>

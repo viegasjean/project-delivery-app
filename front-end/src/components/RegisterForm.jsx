@@ -50,7 +50,7 @@ function RegisterForm() {
             <input
               type="text"
               name="name"
-              data-test-id="common_register__input-name"
+              data-testid="common_register__input-name"
               placeholder="Nome Completo"
               value={ name }
               onChange={ (e) => setName(e.target.value) }
@@ -66,7 +66,7 @@ function RegisterForm() {
             <input
               type="email"
               name="email"
-              data-test-id="common_register__input-email"
+              data-testid="common_register__input-email"
               placeholder="Email"
               value={ email }
               onChange={ (e) => setEmail(e.target.value) }
@@ -82,7 +82,7 @@ function RegisterForm() {
             <input
               type="password"
               name="password"
-              data-test-id="common_register__input-password"
+              data-testid="common_register__input-password"
               placeholder="Senha"
               value={ password }
               onChange={ (e) => setPassword(e.target.value) }
@@ -94,7 +94,7 @@ function RegisterForm() {
       <div className="field">
         <button
           type="button"
-          data-test-id="common_register__button-register"
+          data-testid="common_register__button-register"
           disabled={ disabled }
           onClick={ register }
           className="button is-primary login-btn"
@@ -111,7 +111,7 @@ function RegisterForm() {
         <div className="block">
           <p
             className="invalid-text"
-            data-test-id="common_login__element-invalid-email"
+            data-testid="common_login__element-invalid-email"
           >
             {errMsg}
           </p>
