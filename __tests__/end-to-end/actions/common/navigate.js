@@ -29,7 +29,6 @@ const navigate = {
       });
 
       await expect(page).toCompareURL(`${host}${homePage}`);
-      console.log(`${host}${homePage}`);
       return true;
     },
   },

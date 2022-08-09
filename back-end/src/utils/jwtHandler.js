@@ -7,7 +7,7 @@ class JWT {
       expiresIn: '7d',
       algorithm: 'HS256',
     };
-    this.jwtSecret = process.env.JWT_SECRET;
+    this.jwtSecret = '4H8r1@a8#GnX&avHKZd*';
   }
 
   generateToken(user) {
@@ -40,5 +40,7 @@ class JWT {
 //     return token;
 //   },
 // };
+
+new JWT().generateToken('dksajldk');
 
 module.exports = JWT;
