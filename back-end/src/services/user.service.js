@@ -31,14 +31,15 @@ const create = async (data) => {
   const encryptedPassword = md5(data.password);
   await model.create({
     ...data,
+    role: 'customer',
     password: encryptedPassword,
   });
 
-  const token = new JWT().generateToken({ name: data.name, email: data.email, role: data.role });
+  const token = new JWT().generateToken({ name: data.name, email: data.email, role: 'customer' });
   return {
     name: data.name,
     email: data.email,
-    role: data.role,
+    role: 'customer',
     token,
 };
 };
