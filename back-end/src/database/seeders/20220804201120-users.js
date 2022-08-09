@@ -3,15 +3,6 @@
 module.exports = {
   async up (queryInterface, _Sequelize) {
      await queryInterface.bulkInsert('users', [
-<<<<<<< HEAD
-=======
-      // {
-      //   name: 'Breno Santos',
-      //   email: 'brenosantos145@gmail.com',
-      //   password: '59e91960ac8f5a65c501bdbf7cbbcb63',
-      //   role: 'administrator'
-      // },
->>>>>>> ec4cb4d (Fix: lint errors)
       {
         name: 'Delivery App Admin',
         email: 'adm@deliveryapp.com',

@@ -16,12 +16,10 @@ const login = async ({ email, password }) => {
   const token = new JWT().generateToken({ name: dbUser.name, email, role: dbUser.role });
 
   return {
-    userData: {
       name: dbUser.name,
       email: dbUser.email,
       role: dbUser.role,
-    },
-    token,
+      token,
   };
 };
 
@@ -35,6 +33,14 @@ const create = async (data) => {
     ...data,
     password: encryptedPassword,
   });
+
+  const token = new JWT().generateToken({ name: data.name, email: data.email, role: data.role });
+  return {
+    name: data.name,
+    email: data.email,
+    role: data.role,
+    token,
+};
 };
 
 // login({
