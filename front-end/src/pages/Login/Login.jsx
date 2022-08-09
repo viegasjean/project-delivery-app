@@ -39,10 +39,20 @@ function Login() {
     const res = await login(data);
     if (res.status === okCode) {
       setKey('deliveryUser', res.data);
-      history.push('/customer/products');
+      if (res.data.role === 'administrator') {
+        history.push('/admin/manage');
+      } else if (res.data.role === 'seller') {
+        history.push('/seller/orders');
+      } else {
+        history.push('/customer/products');
+      }
     } else {
       setError(res.data);
     }
+  };
+
+  const toRegister = () => {
+    history.push('/register');
   };
 
   return (
@@ -80,6 +90,7 @@ function Login() {
         <button
           type="button"
           data-testid="common_login__button-register"
+          onClick={ toRegister }
         >
           Ainda não tenho conta
         </button>
