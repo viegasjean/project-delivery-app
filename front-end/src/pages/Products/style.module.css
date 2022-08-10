@@ -5,15 +5,14 @@
 }
 
 .card img {
-  width: 100px;
   height: 100px;
+  width: 100px;
   object-fit: contain;
 }
 
 .cardcontainer {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+  flex-flow: row wrap;
   gap: 20px;
+  width: 100%;
 }
