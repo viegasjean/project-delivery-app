@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { CartContext } from '../../context/cart';
 import { getProducts } from '../../services/api';
 import style from './style.module.css';
@@ -10,6 +11,8 @@ function Products() {
     removeFromCart,
     setQuantity,
   } = useContext(CartContext);
+  const history = useHistory();
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     getProducts().then((res) => {
@@ -19,6 +22,13 @@ function Products() {
     });
     // setCart(getKey('carrinho'));
   }, []);
+
+  useEffect(() => {
+    setTotal(cart.reduce((acc, cartItem) => {
+      acc += cartItem.subTotal;
+      return acc;
+    }, 0));
+  });
 
   return (
     <>
@@ -75,10 +85,15 @@ function Products() {
         type="button"
         data-testid="customer_products__checkout-bottom-value"
       >
-        {cart.reduce((acc, cartItem) => {
-          acc += cartItem.subTotal;
-          return acc;
-        }, 0).toFixed(2).replace(/\./, ',') }
+        {total.toFixed(2).replace(/\./, ',') }
+      </button>
+      <button
+        type="button"
+        onClick={ () => { history.push('/customer/checkout'); } }
+        data-testid="customer_products__button-cart"
+        disabled={ total === 0 }
+      >
+        CARRINHO
       </button>
     </>
 
