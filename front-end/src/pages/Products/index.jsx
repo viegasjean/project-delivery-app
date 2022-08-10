@@ -1,24 +1,29 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { CartContext } from '../../context/cart';
 import { getProducts } from '../../services/api';
 import style from './style.module.css';
 
 function Products() {
-  const [products, setProducts] = useState([]);
   const { cart,
+    setCart,
     addToCart,
     removeFromCart,
     setQuantity,
   } = useContext(CartContext);
 
   useEffect(() => {
-    getProducts().then((res) => { setProducts(res.data); });
+    getProducts().then((res) => {
+      setCart(
+        res.data.map((product) => ({ ...product, quantity: 0, subTotal: 0 })),
+      );
+    });
+    // setCart(getKey('carrinho'));
   }, []);
 
   return (
     <>
       <section className={ style.cardcontainer }>
-        {products && products.map((product) => (
+        {cart && cart.map((product) => (
           <div
             key={ product.id }
             className={ style.card }
@@ -50,7 +55,9 @@ function Products() {
             <input
               type="number"
               data-testid={ `customer_products__input-card-quantity-${product.id}` }
-              value={ cart.find((item) => item.id === product.id)?.quantity || 0 }
+              // defaultValue={ 0 }
+              min={ 0 }
+              value={ product.quantity }
               onChange={ (e) => setQuantity(e, product) }
             />
 
