@@ -1,54 +1,80 @@
-import React from 'react';
-
-const products = [
-  { id: 1, name: 'Skol Lata 250ml', price: 2.20, urlImage: 'http://localhost:3001/images/skol_lata_350ml.jpg' },
-  { id: 2, name: 'Heineken 600ml', price: 7.50, urlImage: 'http://localhost:3001/images/heineken_600ml.jpg' },
-  { id: 3, name: 'Antarctica Pilsen 300ml', price: 2.49, urlImage: 'http://localhost:3001/images/antarctica_pilsen_300ml.jpg' },
-  { id: 4, name: 'Brahma 600ml', price: 7.50, urlImage: 'http://localhost:3001/images/brahma_600ml.jpg' },
-  { id: 5, name: 'Skol 269ml', price: 2.19, urlImage: 'http://localhost:3001/images/skol_269ml.jpg' },
-  { id: 6, name: 'Skol Beats Senses 313ml', price: 4.49, urlImage: 'http://localhost:3001/images/skol_beats_senses_313ml.jpg' },
-];
+import React, { useContext, useEffect, useState } from 'react';
+import { CartContext } from '../../context/cart';
+import { getProducts } from '../../services/api';
+import style from './style.module.css';
 
 function Products() {
+  const [products, setProducts] = useState([]);
+  const { cart,
+    addToCart,
+    removeFromCart,
+    setQuantity,
+  } = useContext(CartContext);
+
+  useEffect(() => {
+    getProducts().then((res) => { setProducts(res.data); });
+  }, []);
+
   return (
-    <section>
-      {products.map((product, index) => (
-        <div
-          key={ product.id }
-        >
-          <h4
-            data-testid={ `customer_products__element-card-title-${index}` }
+    <>
+      <section className={ style.cardcontainer }>
+        {products && products.map((product) => (
+          <div
+            key={ product.id }
+            className={ style.card }
           >
-            { product.name }
-          </h4>
-          <h4
-            data-testid={ `customer_products__element-card-price-${index}` }
-          >
-            { product.price }
-          </h4>
-          <img
-            data-testid={ `customer_products__element-card-bg-image-${index}` }
-            alt="foto ilutrativa do produto"
-            src={ product.urlImage }
-          />
+            <h4
+              data-testid={ `customer_products__element-card-title-${product.id}` }
+            >
+              { product.name }
+            </h4>
+            <h4
+              data-testid={ `customer_products__element-card-price-${product.id}` }
+            >
+              { product.price.replace(/\./, ',') }
+            </h4>
+            <img
+              data-testid={ `customer_products__img-card-bg-image-${product.id}` }
+              alt="foto ilutrativa do produto"
+              src={ product.urlImage }
+            />
 
-          <button
-            type="button"
-            data-testid={ `customer_products__element-card-add-item-${index}` }
-          >
-            +
-          </button>
+            <button
+              type="button"
+              data-testid={ `customer_products__button-card-add-item-${product.id}` }
+              onClick={ () => addToCart(product) }
+            >
+              ADD
+            </button>
 
-          <button
-            type="button"
-            data-testid={ `customer_products__element-card-rm-item-${index}` }
-          >
-            -
-          </button>
+            <input
+              type="number"
+              data-testid={ `customer_products__input-card-quantity-${product.id}` }
+              value={ cart.find((item) => item.id === product.id)?.quantity || 0 }
+              onChange={ (e) => setQuantity(e, product) }
+            />
 
-        </div>
-      ))}
-    </section>
+            <button
+              type="button"
+              data-testid={ `customer_products__button-card-rm-item-${product.id}` }
+              onClick={ () => removeFromCart(product) }
+            >
+              RM
+            </button>
+
+          </div>))}
+      </section>
+      <button
+        type="button"
+        data-testid="customer_products__checkout-bottom-value"
+      >
+        {cart.reduce((acc, cartItem) => {
+          acc += cartItem.subTotal;
+          return acc;
+        }, 0).toFixed(2).replace(/\./, ',') }
+      </button>
+    </>
+
   );
 }
 

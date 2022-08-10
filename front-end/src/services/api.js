@@ -22,7 +22,17 @@ const register = async (user) => {
   }
 };
 
+const getProducts = async () => {
+  try {
+    const { status, data } = await axios.get(`${url}/product/list`);
+    return { status, data };
+  } catch ({ response: { status, data } }) {
+    return { status, data };
+  }
+};
+
 module.exports = {
   login,
   register,
+  getProducts,
 };

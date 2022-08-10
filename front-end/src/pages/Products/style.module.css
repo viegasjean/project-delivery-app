@@ -1,0 +1,19 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.cardcontainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+}
