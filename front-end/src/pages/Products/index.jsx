@@ -89,7 +89,9 @@ function Products() {
       </button>
       <button
         type="button"
-        onClick={ () => { history.push('/customer/checkout'); } }
+        onClick={ () => {
+          history.push('/customer/checkout');
+        } }
         data-testid="customer_products__button-cart"
         disabled={ total === 0 }
       >

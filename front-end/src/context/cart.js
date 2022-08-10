@@ -6,6 +6,7 @@ export const CartContext = createContext();
 
 export default function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
 
   function addToCart(product) {
     const copyCart = [...cart];
@@ -56,7 +57,16 @@ export default function CartProvider({ children }) {
 
   const state = useMemo(
     () => (
-      { cart, setCart, addToCart, removeFromCart, setQuantity, clearCart }),
+      {
+        cart,
+        setCart,
+        total,
+        setTotal,
+        addToCart,
+        removeFromCart,
+        setQuantity,
+        clearCart,
+      }),
     [cart],
   );
 
