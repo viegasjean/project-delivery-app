@@ -50,6 +50,24 @@ export default function CartProvider({ children }) {
     setKey('carrinho', cart);
   }
 
+  function removeItemFromCart(product) {
+    const copyCart = [...cart];
+    // const item = copyCart.find((cartItem) => cartItem.id === product.id);
+
+    // if (item && item.quantity > 0) {
+    //   item.quantity -= 1;
+    //   item.subTotal = item.quantity * item.price;
+    //   setCart(copyCart);
+    // }
+    // else {
+    const arrayFiltered = copyCart.filter(
+      (cartItem) => cartItem.id !== product.id,
+    );
+    setCart(arrayFiltered);
+    // }
+    // setKey('carrinho', cart);
+  }
+
   function clearCart() {
     setCart([]);
     setKey('carrinho', cart);
@@ -62,6 +80,7 @@ export default function CartProvider({ children }) {
         setCart,
         total,
         setTotal,
+        removeItemFromCart,
         addToCart,
         removeFromCart,
         setQuantity,

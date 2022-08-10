@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../context/cart';
 
 export default function Checkout() {
-  const { cart } = useContext(CartContext);
+  const { cart, removeItemFromCart } = useContext(CartContext);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -60,6 +60,9 @@ export default function Checkout() {
               <button
                 data-testid={ `customer_checkout__element-order-table-remove-${index}` }
                 type="button"
+                onClick={ () => {
+                  removeItemFromCart(item);
+                } }
               >
                 REMOVE
               </button>
