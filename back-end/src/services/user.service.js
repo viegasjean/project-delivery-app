@@ -16,6 +16,7 @@ const login = async ({ email, password }) => {
   const token = new JWT().generateToken({ name: dbUser.name, email, role: dbUser.role });
 
   return {
+      id: dbUser.id,
       name: dbUser.name,
       email: dbUser.email,
       role: dbUser.role,
