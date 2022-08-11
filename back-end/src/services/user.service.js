@@ -16,6 +16,7 @@ const login = async ({ email, password }) => {
   const token = new JWT().generateToken({ name: dbUser.name, email, role: dbUser.role });
 
   return {
+      id: dbUser.id,
       name: dbUser.name,
       email: dbUser.email,
       role: dbUser.role,
@@ -44,6 +45,15 @@ const create = async (data) => {
 };
 };
 
+const list = async (role) => {
+  if (role === 'all') {
+    const users = model.findAll();
+    return users;
+  }
+    const users = model.findAll({ where: { role } });
+    return users;
+};
+
 // login({
 //   email: 'brenosantos145@gmail.com',
 //   password: 'senha',
@@ -56,4 +66,4 @@ const create = async (data) => {
 //   role: 'customer',
 // });
 
-module.exports = { login, create };
+module.exports = { login, create, list };

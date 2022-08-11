@@ -7,5 +7,6 @@ const routes = Router();
 
 routes.post('/login', bodyValidator(loginSchema), controller.login);
 routes.post('/register', bodyValidator(registerSchema), controller.create);
+routes.get('/list/:role', controller.list);
 
 module.exports = routes;

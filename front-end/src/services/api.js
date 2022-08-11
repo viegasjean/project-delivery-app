@@ -22,7 +22,53 @@ const register = async (user) => {
   }
 };
 
+const getProducts = async () => {
+  try {
+    const { status, data } = await axios.get(`${url}/product/list`);
+    return { status, data };
+  } catch ({ response: { status, data } }) {
+    return { status, data };
+  }
+};
+
+const getUsers = async (role) => {
+  try {
+    const { status, data } = await axios.get(`${url}/user/list/${role}`);
+    return { status, data };
+  } catch ({ response: { status, data } }) {
+    return { status, data };
+  }
+};
+
+const saveSale = async (sale, token) => {
+  try {
+    const { status, data } = await axios
+      .post(`${url}/sale/save`, sale, { headers: { authorization: token } });
+    return { status, data };
+  } catch ({ response: { status, data } }) {
+    return { status, data };
+  }
+};
+
+const saveSalesProducts = async (salesProducts, token) => {
+  try {
+    const { status, data } = await axios
+      .post(
+        `${url}/salesproducts/save`,
+        salesProducts,
+        { headers: { authorization: token } },
+      );
+    return { status, data };
+  } catch ({ response: { status, data } }) {
+    return { status, data };
+  }
+};
+
 module.exports = {
   login,
   register,
+  getProducts,
+  getUsers,
+  saveSale,
+  saveSalesProducts,
 };
