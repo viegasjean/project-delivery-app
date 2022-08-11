@@ -1,8 +1,8 @@
-const {  salesProducts: model } = require('../database/models');
+const { salesProducts: model } = require('../database/models');
 
 const create = async (products) => {
   const created = await model.bulkCreate(products);
-  console.log('created', created)
+  console.log('created', created);
   return created;
 };
 
@@ -13,8 +13,7 @@ const create = async (products) => {
 //   return created;
 // };
 
-
 module.exports = {
   create,
-  //list
+  // list
 };
