@@ -1,18 +1,17 @@
-
 module.exports = (sequelize, DataTypes) => {
-const salesProduct = sequelize.define('salesProducts', {
-    sale_id: {
+const salesProducts = sequelize.define('salesProducts', {
+    saleId: {
       type: DataTypes.NUMBER,
       primaryKey: true
     },
-    product_id: {
+    productId: {
       type: DataTypes.NUMBER,
       primaryKey: true
     },
     quantity: DataTypes.NUMBER
   }, {
     sequelize,
-    modelName: 'salesProducts',
+    underscored: true,
     timestamps: false,
   });
 
