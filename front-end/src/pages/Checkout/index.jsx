@@ -31,7 +31,7 @@ export default function Checkout() {
         return acc;
       }, 0),
     });
-  }, [cart, sale]);
+  }, [cart]);
 
   const handleChange = ({ target: { value, name } }) => {
     setSale({

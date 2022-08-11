@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { getKey, setKey } from '../services/localStorage';
+import { getKey } from '../services/localStorage';
 
 function Navbar() {
   const [data, setData] = useState({});
@@ -20,7 +20,7 @@ function Navbar() {
   };
 
   const logout = () => {
-    setKey('user', undefined);
+    localStorage.removeItem('user');
     history.push('/login');
   };
 

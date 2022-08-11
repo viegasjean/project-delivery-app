@@ -22,14 +22,14 @@ function Products() {
       );
     });
     // setCart(getKey('carrinho'));
-  }, [setCart]);
+  }, []);
 
   useEffect(() => {
     setTotal(cart.reduce((acc, cartItem) => {
       acc += cartItem.subTotal;
       return acc;
     }, 0));
-  }, [cart]);
+  });
 
   return (
     <>
