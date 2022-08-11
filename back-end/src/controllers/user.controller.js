@@ -21,7 +21,19 @@ const create = async (req, res, next) => {
   }
 };
 
+const list = async (req, res, next) => {
+  try {
+    const { role } = req.params;
+    const users = await service.list(role);
+
+    return res.status(200).json(users);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   login,
   create,
+  list,
 };
