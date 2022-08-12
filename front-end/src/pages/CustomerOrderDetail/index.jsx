@@ -34,15 +34,19 @@ function OrderDetail() {
           {' '}
           {String(orderData.id).padStart(Number('4'), '0')}
         </li>
-        <li data-testid="customer_order_details__element-order-details-label-seller-name">
+        <li
+          data-testid="customer_order_details__element-order-details-label-seller-name"
+        >
           {orderData.seller.name}
         </li>
-        <li data-testid="customer_order_details__element-order-details-label-order-date">
+        <li
+          data-testid="customer_order_details__element-order-details-label-order-date"
+        >
           {new Date(orderData.saleDate).toLocaleDateString('pt-br')}
         </li>
         <li
-          // eslint-disable-next-line max-len
-          data-testid="customer_order_details__element-order-details-label-delivery-status"
+          data-testid={ `
+          customer_order_details__element-order-details-label-delivery-status` }
         >
           {orderData.status}
         </li>
