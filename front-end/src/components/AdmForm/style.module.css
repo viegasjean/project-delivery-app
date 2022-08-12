@@ -38,3 +38,8 @@
 .container form button:hover {
   filter: brightness(120%);
 }
+
+.container form button:disabled {
+  cursor: not-allowed;
+  filter: grayscale(100);
+}

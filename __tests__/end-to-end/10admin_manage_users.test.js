@@ -22,7 +22,7 @@ beforeEach(async () => {
   ).toBeTruthy();
 });
 
-describe.only(requirement(36), () => {
+describe(requirement(36), () => {
   test("O avaliador testará os data-testids referentes aos elementos do formulário de cadastros", async () => {
     await expect(page).toFindElement(adminManagePage.input.name);
     await expect(page).toFindElement(adminManagePage.input.email);
@@ -114,14 +114,14 @@ describe(requirement(38), () => {
 
   test(`O avaliador tentará realizar o fluxo de cadastro com ${people.length} pessoas usuárias, validando-os no banco`, async () => {
     showPeopleList(people, global.__TESTDESC__);
-    
+
     expect(
       await action.admin.register(page, { database, people })
     ).toBeTruthy();
   });
 });
 
-describe(requirement(39), () => {
+describe.only(requirement(39), () => {
   const testUser = newUser({ passwordLen: lengthRules.password });
   testUser.role = Math.round(Math.random()) ? "seller" : "customer";
 
@@ -156,14 +156,14 @@ describe(requirement(40), () => {
 
   test(`O avaliador tentará realizar o fluxo de cadastro com ${people.length} pessoas usuárias e verificará se as mesmas aparecem na tabela`, async () => {
     showPeopleList(people, global.__TESTDESC__);
-    
+
     expect(
       await action.admin.register(page, { database, people })
     ).toBeTruthy();
 
     for (let i; i < people.length; i += one) {
       const { email, name, role } = people[i]
-      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.itemNumber + `[data-testid$='-${i}']`, i+1);
+      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.itemNumber + `[data-testid$='-${i}']`, i + 1);
       await expect(page).toGetTextFromElement(adminManagePage.element.userTable.email + `[data-testid$='-${i}']`, email);
       await expect(page).toGetTextFromElement(adminManagePage.element.userTable.name + `[data-testid$='-${i}']`, name);
       await expect(page).toGetTextFromElement(adminManagePage.element.userTable.role + `[data-testid$='-${i}']`, role);
@@ -175,25 +175,25 @@ describe(requirement(41), () => {
   const people = createUserForAdm(lengthRules);
 
   const peopleList = people
-    .map((el,index)=> ({ listItem: index + 3, ...el  }));
+    .map((el, index) => ({ listItem: index + 3, ...el }));
 
   const excludeItens = forceExcludeItens(peopleList, 3);
-  
+
   const peopleToExclude = peopleList
     .filter((el) => excludeItens.includes(el.listItem));
 
   const newPeopleList = peopleList
-    .filter(({listItem}) => !excludeItens.includes(listItem))
-    .map((el,index)=> ({ ...el, listItem: index + 3 }));
+    .filter(({ listItem }) => !excludeItens.includes(listItem))
+    .map((el, index) => ({ ...el, listItem: index + 3 }));
 
   peopleList.map(el => delete el.password && el);
   excludeItens.map(el => delete el.password && el);
   newPeopleList.map(el => delete el.password && el);
-  
+
   test(`O avaliador tentará realizar o fluxo de cadastro com ${people.length} pessoas usuárias e removerá ${peopleToExclude.length} validando na tabela`, async () => {
     showPeopleList(peopleList, requirement(44));
     showPeopleList(peopleToExclude, requirement(44), 'Pessoas que serão deletadas');
-    showPeopleList(newPeopleList, requirement(44),'Nova lista de pessoas');
+    showPeopleList(newPeopleList, requirement(44), 'Nova lista de pessoas');
 
     expect(
       await action.admin.register(page, { database, people })
@@ -201,13 +201,13 @@ describe(requirement(41), () => {
 
     for (let i; i < peopleList.length; i += one) {
       const { listItem, email, name, role } = peopleList[i]
-      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.itemNumber + `[data-testid$='-${listItem -1}']`, listItem);
-      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.email + `[data-testid$='-${listItem -1}']`, email);
-      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.name + `[data-testid$='-${listItem -1}']`, name);
-      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.role + `[data-testid$='-${listItem -1}']`, role);
+      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.itemNumber + `[data-testid$='-${listItem - 1}']`, listItem);
+      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.email + `[data-testid$='-${listItem - 1}']`, email);
+      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.name + `[data-testid$='-${listItem - 1}']`, name);
+      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.role + `[data-testid$='-${listItem - 1}']`, role);
     }
 
-    for (let i = peopleToExclude.length-one ; i >= zero; i -= one) {
+    for (let i = peopleToExclude.length - one; i >= zero; i -= one) {
       const { listItem } = peopleToExclude[i];
       await expect(page).toClickOnElement({
         selector: adminManagePage.element.userTable.remove + `[data-testid$='-${listItem - 1}']`
@@ -216,10 +216,10 @@ describe(requirement(41), () => {
 
     for (let i; i < newPeopleList.length; i += one) {
       const { listItem, email, name, role } = newPeopleList[i]
-      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.itemNumber + `[data-testid$='-${listItem -1}']`, listItem);
-      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.email + `[data-testid$='-${listItem -1}']`, email);
-      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.name + `[data-testid$='-${listItem -1}']`, name);
-      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.role + `[data-testid$='-${listItem -1}']`, role);
+      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.itemNumber + `[data-testid$='-${listItem - 1}']`, listItem);
+      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.email + `[data-testid$='-${listItem - 1}']`, email);
+      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.name + `[data-testid$='-${listItem - 1}']`, name);
+      await expect(page).toGetTextFromElement(adminManagePage.element.userTable.role + `[data-testid$='-${listItem - 1}']`, role);
     }
   });
 });

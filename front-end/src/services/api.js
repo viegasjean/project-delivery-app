@@ -11,9 +11,17 @@ const login = async (user) => {
   }
 };
 
-const register = async (user) => {
+const register = async (user, token) => {
   try {
-    const { status, data } = await axios.post(`${url}/user/register`, user);
+    if (!token) {
+      const { status, data } = await axios.post(`${url}/user/register`, user);
+      return { status, data };
+    }
+    const { status, data } = await axios.post(`${url}/user/adm/register`, user, {
+      headers: {
+        authorization: token,
+      },
+    });
     return { status, data };
   } catch ({ response: { status, data } }) {
     return { status, data };
