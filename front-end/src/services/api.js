@@ -11,8 +11,6 @@ const login = async (user) => {
   }
 };
 
-// login({email: "bola8@gmail.com", password: "senhaBonita"})
-
 const register = async (user) => {
   try {
     const { status, data } = await axios.post(`${url}/user/register`, user);
