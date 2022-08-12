@@ -38,7 +38,7 @@ function Login() {
     e.preventDefault();
     const res = await login(data);
     if (res.status === okCode) {
-      setKey('deliveryUser', res.data);
+      setKey('user', res.data);
       if (res.data.role === 'administrator') {
         history.push('/admin/manage');
       } else if (res.data.role === 'seller') {

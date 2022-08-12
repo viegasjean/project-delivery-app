@@ -40,7 +40,7 @@ function Register() {
     e.preventDefault();
     const res = await register(data);
     if (res.status === created) {
-      setKey('deliveryUser', res.data);
+      setKey('user', res.data);
       history.push('/customer/products');
     } else {
       setError(res.data);
