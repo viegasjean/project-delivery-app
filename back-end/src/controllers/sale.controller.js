@@ -9,9 +9,10 @@ const create = async (req, res, next) => {
   }
 };
 
-const list = async (_req, res, next) => {
+const list = async (req, res, next) => {
   try {
-    const response = await service.list();
+    const { id } = req.params;
+    const response = await service.list(id);
     return res.status(200).json(response);
   } catch (error) {
     next(error);

@@ -5,9 +5,18 @@ const create = async (sale) => {
   return created;
 };
 
-const list = async () => {
+const list = async (id) => {
   const created = await model.findAll(
-     { include: [{ model: product, as: 'products', through: { attributes: [] } }] },
+      { 
+        where: { id },
+        include: { 
+          model: product,
+          as: 'products',
+          through: {
+            attributes: ['quantity'], 
+          }, 
+        }, 
+      },
     );
   return created;
 };
