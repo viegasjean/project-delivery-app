@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const controller = require('../controllers/user.controller');
 const bodyValidator = require('../middlewares/bodyValidator.middleware');
+// const tokenValidator = require('../middlewares/tokenValidator.middleware');
 const { loginSchema, registerSchema } = require('../schemas/user.schema');
 
 const routes = Router();
@@ -8,5 +9,8 @@ const routes = Router();
 routes.post('/login', bodyValidator(loginSchema), controller.login);
 routes.post('/register', bodyValidator(registerSchema), controller.create);
 routes.get('/list/:role', controller.list);
+
+// routes.get('/test', tokenValidator('administrator'),
+//  (req, res) => res.status(200).json({ message: 'okay' }));
 
 module.exports = routes;

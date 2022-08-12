@@ -54,16 +54,4 @@ const list = async (role) => {
     return users;
 };
 
-// login({
-//   email: 'brenosantos145@gmail.com',
-//   password: 'senha',
-// });
-
-// create({
-//   name: 'Teste',
-//   email: 'teste@teste.com',
-//   password: 'senhaDeTeste',
-//   role: 'customer',
-// });
-
 module.exports = { login, create, list };
