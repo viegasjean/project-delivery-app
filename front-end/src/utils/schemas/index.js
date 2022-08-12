@@ -14,7 +14,14 @@ const registerSchema = yup.object().shape({
   password: yup.string().min(minPassword).required(),
 });
 
+const adminRegisterSchema = yup.object().shape({
+  name: yup.string().min(fullName).required(),
+  email: yup.string().email().required(),
+  password: yup.string().min(minPassword).required(),
+  role: yup.string().matches(/(administrator|customer|seller)/),
+});
 module.exports = {
   loginSchema,
   registerSchema,
+  adminRegisterSchema,
 };

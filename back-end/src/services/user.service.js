@@ -32,17 +32,17 @@ const create = async (data) => {
   const encryptedPassword = md5(data.password);
   await model.create({
     ...data,
-    role: 'customer',
+    role: data.role,
     password: encryptedPassword,
   });
 
-  const token = new JWT().generateToken({ name: data.name, email: data.email, role: 'customer' });
+  const token = new JWT().generateToken({ name: data.name, email: data.email, role: data.role });
   return {
     name: data.name,
     email: data.email,
-    role: 'customer',
+    role: data.role,
     token,
-};
+  };
 };
 
 const list = async (role) => {
@@ -53,17 +53,5 @@ const list = async (role) => {
     const users = model.findAll({ where: { role } });
     return users;
 };
-
-// login({
-//   email: 'brenosantos145@gmail.com',
-//   password: 'senha',
-// });
-
-// create({
-//   name: 'Teste',
-//   email: 'teste@teste.com',
-//   password: 'senhaDeTeste',
-//   role: 'customer',
-// });
 
 module.exports = { login, create, list };

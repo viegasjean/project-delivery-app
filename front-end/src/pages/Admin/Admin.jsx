@@ -1,14 +1,16 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
+import Form from '../../components/AdmForm';
+import style from './style.module.css';
 
 function Admin() {
   return (
-    <div>
+    <>
       <Navbar />
-      <h1>
-        Em desenvolvimento
-      </h1>
-    </div>
+      <main className={ style.main }>
+        <Form />
+      </main>
+    </>
   );
 }
 
