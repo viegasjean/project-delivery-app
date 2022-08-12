@@ -12,7 +12,7 @@ const login = async (req, res, next) => {
 
 const create = async (req, res, next) => {
   try {
-    const { email, password, name, role } = req.body;
+    const { email, password, name, role = 'customer' } = req.body;
     const response = await service.create({ email, password, name, role });
 
     return res.status(201).json({ ...response });
