@@ -6,6 +6,7 @@ import Login from './pages/Login/Login';
 import Products from './pages/Products';
 import Register from './pages/Register/Register';
 import CustomerOrders from './pages/CustomerOrders/CustomerOrders';
+import CustomerOrderDetail from './pages/CustomerOrderDetail';
 import SellerOrders from './pages/SellerOrders/SellerOrders';
 import Admin from './pages/Admin/Admin';
 
@@ -18,6 +19,7 @@ function Routes() {
       </Route>
       <Route exact path="/register" component={ Register } />
       <Route exact path="/customer/orders" component={ CustomerOrders } />
+      <Route exact path="/customer/orders/:id" component={ CustomerOrderDetail } />
       <Route exact path="/seller/orders" component={ SellerOrders } />
       <Route exact path="/admin/manage" component={ Admin } />
       <CartProvider>

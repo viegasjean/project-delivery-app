@@ -1,4 +1,4 @@
-const { sale: model, product } = require('../database/models');
+const { sale: model, product, user } = require('../database/models');
 
 const create = async (sale) => {
   const created = await model.create(sale);
@@ -9,13 +9,18 @@ const list = async (id) => {
   const created = await model.findAll(
       { 
         where: { id },
-        include: { 
-          model: product,
-          as: 'products',
-          through: {
-            attributes: ['quantity'], 
-          }, 
-        }, 
+        include: [
+          { 
+            model: product,
+            as: 'products',
+            through: { attributes: ['quantity'] }, 
+          },
+          {
+            model: user,
+            as: 'seller',
+            attributes: { exclude: ['id', 'password', 'email', 'role'] },
+          },
+        ], 
       },
     );
   return created;
