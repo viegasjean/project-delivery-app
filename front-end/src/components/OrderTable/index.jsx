@@ -1,7 +1,7 @@
 import React from 'react';
-// import propTypes from 'prop-types';
+import propTypes from 'prop-types';
 
-function OrderTable({ orders, enableDelete, total }) {
+function OrderTable({ orders, enableDelete = false, total }) {
   return (
     <table>
       <thead>
@@ -85,10 +85,12 @@ function OrderTable({ orders, enableDelete, total }) {
   );
 }
 
-// OrderTable.propTypes = {
-//   orders: propTypes.arrayOf(propTypes.object()).isRequired,
-//   enableDelete: propTypes.bool.isRequired,
-//   total: propTypes.number.isRequired,
-// };
+OrderTable.propTypes = {
+  orders: propTypes.arrayOf(propTypes.shape({
+    // id: propTypes.string,
+  })).isRequired,
+  enableDelete: propTypes.bool.isRequired,
+  total: propTypes.number.isRequired,
+};
 
 export default OrderTable;
