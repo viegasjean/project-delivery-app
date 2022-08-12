@@ -1,8 +1,7 @@
-/* eslint-disable max-len */
-/* eslint-disable react/prop-types */
 import React from 'react';
+import propTypes from 'prop-types';
 
-function OrderTable({ orders, enableDelete, total }) {
+function OrderTable({ orders, enableDelete = false, total }) {
   return (
     <table>
       <thead>
@@ -21,34 +20,46 @@ function OrderTable({ orders, enableDelete, total }) {
         {orders.map((order, index) => (
           <tr key={ order.id }>
             <td
-              data-testid={ `customer_order_details__element-order-table-item-number-<${index}>` }
+              data-testid={
+                `customer_order_details__element-order-table-item-number-<${index}>`
+              }
             >
               {index + 1}
             </td>
             <td
-              data-testid={ `customer_order_details__element-order-table-name-<${index}>` }
+              data-testid={
+                `customer_order_details__element-order-table-name-<${index}>`
+              }
             >
               {order.name}
             </td>
             <td
-              data-testid={ `customer_order_details__element-order-table-quantity-<${index}>` }
+              data-testid={
+                `customer_order_details__element-order-table-quantity-<${index}>`
+              }
             >
               {order.salesProducts.quantity}
             </td>
             <td
-              data-testid={ `customer_order_details__element-order-table-sub-total-<${index}>` }
+              data-testid={
+                `customer_order_details__element-order-table-sub-total-<${index}>`
+              }
             >
               {order.price}
             </td>
             <td
-              data-testid={ `customer_order_details__element-order-total-price-<${index}>` }
+              data-testid={
+                `customer_order_details__element-order-total-price-<${index}>`
+              }
             >
               {(order.salesProducts.quantity * order.price).toFixed(2)}
             </td>
             {enableDelete && (
               <td>
                 <button
-                  data-testid={ `customer_checkout__element-order-table-remove-<${index}>` }
+                  data-testid={
+                    `customer_checkout__element-order-table-remove-<${index}>`
+                  }
                   type="button"
                 >
                   Remover
@@ -73,5 +84,11 @@ function OrderTable({ orders, enableDelete, total }) {
 
   );
 }
+
+OrderTable.propTypes = {
+  orders: propTypes.arrayOf(propTypes.object()).isRequired,
+  enableDelete: propTypes.bool.isRequired,
+  total: propTypes.number.isRequired,
+};
 
 export default OrderTable;
