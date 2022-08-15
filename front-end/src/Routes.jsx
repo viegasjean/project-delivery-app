@@ -15,7 +15,8 @@ function Routes() {
         <Redirect to="/login" />
       </Route>
       <Route exact path="/register" component={ Register } />
-      <Route exact path="/sale" component={ Orders } />
+       {/* creio que essa não seja a rota correta, usei para testar o componente, porém fucionou */}
+      <Route exact path="/sale" component={ Orders } /> 
       <CartProvider>
         <Route exact path="/customer/products" component={ Products } />
         <Route exact path="/customer/checkout" component={ Checkout } />
