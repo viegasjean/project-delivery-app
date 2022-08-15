@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Navbar from '../../components/Navbar';
 import { CartContext } from '../../context/cart';
 import { getProducts } from '../../services/api';
 import style from './style.module.css';
@@ -32,6 +33,7 @@ function Products() {
 
   return (
     <>
+      <Navbar />
       <section className={ style.cardcontainer }>
         {cart && cart.map((product) => (
           <div

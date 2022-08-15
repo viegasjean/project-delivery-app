@@ -10,7 +10,7 @@ export default function Checkout() {
   const [sellers, setSellers] = useState([]);
   const [sale, setSale] = useState({
     sellerId: '',
-    userId: getKey('deliveryUser').id,
+    userId: getKey('user').id,
     totalPrice: 0,
     deliveryAddress: '',
     deliveryNumber: '',
@@ -41,7 +41,7 @@ export default function Checkout() {
   };
 
   const handleSubmit = () => {
-    const { token } = getKey('deliveryUser');
+    const { token } = getKey('user');
     saveSale(sale, token)
       .then(({ data }) => {
         console.log(data);
