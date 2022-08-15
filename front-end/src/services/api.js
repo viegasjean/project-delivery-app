@@ -71,7 +71,7 @@ const getSalesById = async (id) => {
   } catch ({ response: { status, data } }) {
     return { status, data };
   }
-}
+};
 
 module.exports = {
   login,
@@ -80,5 +80,5 @@ module.exports = {
   getUsers,
   saveSale,
   saveSalesProducts,
-  getSalesById
+  getSalesById,
 };
