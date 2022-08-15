@@ -16,8 +16,7 @@ const list = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
-
+};
 
 const saleByUserId = async (req, res, next) => {
 try {
@@ -27,10 +26,10 @@ try {
 } catch (error) {
   next(error);
 }
-}
+};
 
 module.exports = {
   create,
   list,
-  saleByUserId
+  saleByUserId,
 };
