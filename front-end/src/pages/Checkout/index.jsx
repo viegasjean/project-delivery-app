@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Navbar from '../../components/Navbar';
 import { CartContext } from '../../context/cart';
 import { getUsers, saveSale, saveSalesProducts } from '../../services/api';
 import { getKey } from '../../services/localStorage';
@@ -61,6 +62,7 @@ export default function Checkout() {
 
   return (
     <>
+      <Navbar />
       <section>
         {cart && cart
           .filter((item) => (item.quantity > 0))
