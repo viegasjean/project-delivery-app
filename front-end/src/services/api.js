@@ -82,9 +82,9 @@ const getSaleDetails = async (id) => {
   }
 };
 
-const getSalesById = async (id) => {
+const getSalesByCustomerId = async (id) => {
   try {
-    const { status, data } = await axios.get(`${url}/sale/${id}`);
+    const { status, data } = await axios.get(`${url}/sale/listByUserId/${id}`);
     return { status, data };
   } catch ({ response: { status, data } }) {
     return { status, data };
@@ -98,6 +98,6 @@ module.exports = {
   getUsers,
   saveSale,
   saveSalesProducts,
-  getSalesById,
+  getSalesByCustomerId,
   getSaleDetails,
 };
