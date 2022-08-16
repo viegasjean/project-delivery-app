@@ -55,11 +55,11 @@ function Login() {
     history.push('/register');
   };
 
-  if (getKey('user').role === 'customer') history.push('/customer/products');
+  if (getKey('user')?.role === 'customer') history.push('/customer/products');
 
-  if (getKey('user').role === 'administrator') history.push('/admin/manage');
+  if (getKey('user')?.role === 'administrator') history.push('/admin/manage');
 
-  if (getKey('user').role === 'seller') history.push('/seller/orders');
+  if (getKey('user')?.role === 'seller') history.push('/seller/orders');
 
   return (
     <div className={ style.container }>

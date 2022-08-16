@@ -37,8 +37,7 @@ function CustomerOrders() {
               {new Intl.DateTimeFormat('pt-BR').format(sale.date)}
             </p>
             <p data-testid={ `customer_orders__element-card-price-${sale.id}` }>
-              R$
-              {sale.totalPrice}
+              {sale.totalPrice.replace(/\./, ',')}
             </p>
             <p data-testid={ `customer_orders__element-delivery-status-${sale.id}` }>
               {sale.status}
