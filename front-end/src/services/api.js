@@ -70,6 +70,18 @@ const saveSalesProducts = async (salesProducts, token) => {
   }
 };
 
+const getSaleDetails = async (id) => {
+  try {
+    const { status, data } = await axios
+      .get(
+        `${url}/sale/list/${id}`,
+      );
+    return { status, data };
+  } catch ({ response: { status, data } }) {
+    return { status, data };
+  }
+};
+
 const getSalesById = async (id) => {
   try {
     const { status, data } = await axios.get(`${url}/sale/${id}`);
@@ -87,4 +99,5 @@ module.exports = {
   saveSale,
   saveSalesProducts,
   getSalesById,
+  getSaleDetails,
 };

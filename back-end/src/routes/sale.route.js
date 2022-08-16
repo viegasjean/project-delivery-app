@@ -7,5 +7,6 @@ routes.get('/', controller.list);
 routes.get('/:id', controller.saleByUserId);
 
 routes.post('/save', controller.create);
+routes.get('/list/:id', controller.list);
 
 module.exports = routes;
