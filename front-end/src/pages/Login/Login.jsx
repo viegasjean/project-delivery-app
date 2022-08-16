@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import style from './style.module.css';
 
-import { loginSchema } from '../../utils/schemas/index';
 import { login } from '../../services/api';
 import { okCode } from '../../services/constants';
-import { setKey } from '../../services/localStorage';
+import { getKey, setKey } from '../../services/localStorage';
+import { loginSchema } from '../../utils/schemas/index';
 
 function Login() {
   const [data, setData] = useState({
@@ -54,6 +54,12 @@ function Login() {
   const toRegister = () => {
     history.push('/register');
   };
+
+  if (getKey('user')?.role === 'customer') history.push('/customer/products');
+
+  if (getKey('user')?.role === 'administrator') history.push('/admin/manage');
+
+  if (getKey('user')?.role === 'seller') history.push('/seller/orders');
 
   return (
     <div className={ style.container }>

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import CartProvider from './context/cart';
+import Admin from './pages/Admin/Admin';
 import Checkout from './pages/Checkout';
+import CustomerOrderDetail from './pages/CustomerOrderDetail';
+import CustomerOrders from './pages/CustomerOrders/CustomerOrders';
 import Login from './pages/Login/Login';
 import Products from './pages/Products';
 import Register from './pages/Register/Register';
-import CustomerOrders from './pages/CustomerOrders/CustomerOrders';
-import CustomerOrderDetail from './pages/CustomerOrderDetail';
 import SellerOrders from './pages/SellerOrders/SellerOrders';
-import Admin from './pages/Admin/Admin';
 
 function Routes() {
   return (
