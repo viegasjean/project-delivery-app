@@ -44,14 +44,18 @@ function OrderDetail() {
         >
           {new Date(orderData.saleDate).toLocaleDateString('pt-br')}
         </li>
-        <li
-          data-testid={ `
-          customer_order_details__element-order-details-label-delivery-status` }
-        >
-          {orderData.status}
+        <li>
+          <label
+            htmlFor="deliveryCheck"
+            data-testid={ 'customer_order_details__'
+              + 'element-order-details-label-delivery-status' }
+          >
+            {orderData.status}
+          </label>
         </li>
         <li>
           <button
+            name="deliveryCheck"
             data-testid="customer_order_details__button-delivery-check"
             type="button"
             disabled
