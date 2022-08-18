@@ -57,11 +57,12 @@ function Products() {
             />
 
             <button
+              className={ style.buttonAdd }
               type="button"
               data-testid={ `customer_products__button-card-add-item-${product.id}` }
               onClick={ () => addToCart(product) }
             >
-              ADD
+              +1
             </button>
 
             <input
@@ -74,31 +75,35 @@ function Products() {
             />
 
             <button
+              className={ style.buttonRemove }
               type="button"
               data-testid={ `customer_products__button-card-rm-item-${product.id}` }
               onClick={ () => removeFromCart(product) }
             >
-              RM
+              Remove
             </button>
 
           </div>))}
       </section>
-      <button
-        type="button"
-        data-testid="customer_products__checkout-bottom-value"
-      >
-        {total.toFixed(2).replace(/\./, ',') }
-      </button>
-      <button
-        type="button"
-        onClick={ () => {
-          history.push('/customer/checkout');
-        } }
-        data-testid="customer_products__button-cart"
-        disabled={ total === 0 }
-      >
-        CARRINHO
-      </button>
+      <footer className={ style.footer }>
+        <button
+          type="button"
+          data-testid="customer_products__checkout-bottom-value"
+        >
+          Total: R$
+          {total.toFixed(2).replace(/\./, ',') }
+        </button>
+        <button
+          type="button"
+          onClick={ () => {
+            history.push('/customer/checkout');
+          } }
+          data-testid="customer_products__button-cart"
+          disabled={ total === 0 }
+        >
+          CARRINHO
+        </button>
+      </footer>
     </>
 
   );
