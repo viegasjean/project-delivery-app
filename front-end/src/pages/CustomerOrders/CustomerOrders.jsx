@@ -30,6 +30,7 @@ function CustomerOrders() {
             onClick={ () => history.push(`/customer/orders/${sale.id}`) }
           >
             <h3 data-testid={ `customer_orders__element-order-id-${sale.id}` }>
+              Pedido
               00
               {sale.id}
             </h3>
@@ -37,9 +38,13 @@ function CustomerOrders() {
               {new Intl.DateTimeFormat('pt-BR').format(sale.date)}
             </p>
             <p data-testid={ `customer_orders__element-card-price-${sale.id}` }>
+              Total:
+              {' '}
               {sale.totalPrice.replace(/\./, ',')}
             </p>
             <p data-testid={ `customer_orders__element-delivery-status-${sale.id}` }>
+              Status:
+              {' '}
               {sale.status}
             </p>
           </button>
