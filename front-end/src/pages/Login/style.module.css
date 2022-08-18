@@ -1,25 +1,81 @@
-.container {
-  margin: 0 auto;
-  width: 300px;
+body{
+  background-color: #23232D;
 }
 
-.container h1 {
+.container {
+  margin: 150px auto;
+  width: 300px;
+  background-color: #FAF9FF ;
+  padding: 25px;
+  border-radius: 15px;
+}
+
+.container h2 {
   text-align: center;
+  color: #555864;
 }
 
 .container form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   width: 100%;
 }
 
 .container form label {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  color: #555864;
+  gap: 1px;
 }
 
 .container form label input {
+
+  background-color: #5558641e;
+
   padding: 0.5rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
 }
+
+.buttonForm, .buttonRegister {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: #F03F5B;
+  color: #FAF9FF;
+
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+  outline: none;
+
+  font-weight: bold;
+
+  transition: 0.2s ease-in-out;
+}
+
+.buttonRegister:hover {
+  cursor: pointer;
+
+  transform: scale(1.05);
+  background-color: #f03f5abb;
+
+}
+
+
+.buttonForm:hover {
+  cursor: pointer;
+
+  transform: scale(1.05);
+  background-color: #f03f5abb;
+
+}
+
+.error {
+  color: #F03F5B;
+  font-size: 0.8rem;
+  font-weight: bold;
+} 

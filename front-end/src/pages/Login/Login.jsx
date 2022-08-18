@@ -63,10 +63,10 @@ function Login() {
 
   return (
     <div className={ style.container }>
-      <h1>Login</h1>
+      <h2>Login</h2>
       <form>
         <label htmlFor="email">
-          Email:
+          Email
           <input
             type="email"
             name="email"
@@ -86,6 +86,7 @@ function Login() {
           />
         </label>
         <button
+          className={ style.buttonForm }
           type="submit"
           data-testid="common_login__button-login"
           onClick={ submit }
@@ -94,6 +95,7 @@ function Login() {
           Login
         </button>
         <button
+          className={ style.buttonForm }
           type="button"
           data-testid="common_login__button-register"
           onClick={ toRegister }
@@ -103,6 +105,7 @@ function Login() {
       </form>
       { error && (
         <span
+          className={ style.error }
           data-testid="common_login__element-invalid-email"
         >
           {error.message}
