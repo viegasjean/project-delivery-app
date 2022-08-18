@@ -86,6 +86,7 @@ function Register() {
           />
         </label>
         <button
+          className={ style.buttonRegister }
           type="button"
           onClick={ submit }
           disabled={ isDisabled }
@@ -94,6 +95,7 @@ function Register() {
           Cadastrar
         </button>
         <button
+          className={ style.buttonRegister }
           type="button"
           onClick={ toLogin }
         >

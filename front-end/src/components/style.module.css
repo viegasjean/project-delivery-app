@@ -1,0 +1,37 @@
+.navbar{
+    padding: 1em;
+    text-align: center;
+
+    display: flex;
+    justify-content: space-evenly;
+
+    font: white;
+}
+
+hr{
+    border: 1px solid rgba(255, 255, 255, 0.205);
+}
+
+span{
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.navbar button{
+    background-color: #F03F5B;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 120px;
+
+    transition: 0.2s ease-in-out;
+}
+
+.navbar button:hover{
+
+    transform: scale(1.05);
+    background-color: #f03f5ab7;
+}
