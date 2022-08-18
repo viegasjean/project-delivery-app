@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getKey } from '../services/localStorage';
+import style from './style.module.css';
 
 function Navbar() {
   const [data, setData] = useState({});
@@ -29,10 +30,12 @@ function Navbar() {
   }, []);
 
   return (
-    <nav>
-      { data.role === 'customer'
+    <>
+      <nav className={ style.navbar }>
+        { data.role === 'customer'
       && (
         <button
+          className={ style.buttonProducts }
           type="button"
           onClick={ toProdutcs }
           data-testid="customer_products__element-navbar-link-products"
@@ -40,9 +43,10 @@ function Navbar() {
           PRODUTOS
         </button>
       )}
-      { data.role === 'customer'
+        { data.role === 'customer'
       && (
         <button
+          className={ style.buttonOrders }
           type="button"
           onClick={ toOrders }
           data-testid="customer_products__element-navbar-link-orders"
@@ -50,7 +54,7 @@ function Navbar() {
           MEUS PEDIDOS
         </button>
       )}
-      { data.role === 'seller'
+        { data.role === 'seller'
       && (
         <button
           type="button"
@@ -59,7 +63,7 @@ function Navbar() {
           PEDIDOS
         </button>
       )}
-      { data.role === 'administrator'
+        { data.role === 'administrator'
       && (
         <button
           type="button"
@@ -68,19 +72,23 @@ function Navbar() {
           GERENCIAR USUÁRIOS
         </button>
       )}
-      <span
-        data-testid="customer_products__element-navbar-user-full-name"
-      >
-        { data.name }
-      </span>
-      <button
-        type="button"
-        onClick={ logout }
-        data-testid="customer_products__element-navbar-link-logout"
-      >
-        Sair
-      </button>
-    </nav>
+        <span
+          className={ style.user }
+          data-testid="customer_products__element-navbar-user-full-name"
+        >
+          { data.name }
+        </span>
+        <button
+          className={ style.buttonLogout }
+          type="button"
+          onClick={ logout }
+          data-testid="customer_products__element-navbar-link-logout"
+        >
+          Sair
+        </button>
+      </nav>
+      <hr />
+    </>
   );
 }
 
