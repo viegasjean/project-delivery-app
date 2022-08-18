@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar';
 import { CartContext } from '../../context/cart';
 import { getUsers, saveSale, saveSalesProducts } from '../../services/api';
 import { getKey } from '../../services/localStorage';
+import style from './style.module.css';
 
 export default function Checkout() {
   const { cart, removeItemFromCart } = useContext(CartContext);
@@ -63,30 +64,37 @@ export default function Checkout() {
   return (
     <>
       <Navbar />
-      <section>
+      <section className={ style.cartContext }>
         {cart && cart
           .filter((item) => (item.quantity > 0))
           .map((item, index) => (
             <div
               key={ item.id }
+              className={ style.cartItem }
             >
               <h3
                 data-testid={
                   `customer_checkout__element-order-table-item-number-${index}`
                 }
               >
+                Item:
+                {' '}
                 { index + 1 }
 
               </h3>
               <h3
                 data-testid={ `customer_checkout__element-order-table-name-${index}` }
               >
+                Produto:
+                {' '}
                 { item.name }
 
               </h3>
               <h3
                 data-testid={ `customer_checkout__element-order-table-quantity-${index}` }
               >
+                Quantidade:
+                {' '}
                 { item.quantity }
 
               </h3>
@@ -95,6 +103,7 @@ export default function Checkout() {
                   `customer_checkout__element-order-table-unit-price-${index}`
                 }
               >
+                Preço: R$
                 { item.price.replace(/\./, ',') }
 
               </h3>
@@ -103,10 +112,12 @@ export default function Checkout() {
                   `customer_checkout__element-order-table-sub-total-${index}`
                 }
               >
+                Subtotal:  R$
                 { item.subTotal.toFixed(2).replace(/\./, ',') }
 
               </h3>
               <button
+                className={ style.removeButton }
                 data-testid={ `customer_checkout__element-order-table-remove-${index}` }
                 type="button"
                 onClick={ () => {
@@ -117,48 +128,54 @@ export default function Checkout() {
               </button>
             </div>
           )) }
-        <h2
-          data-testid="customer_checkout__element-order-total-price"
-        >
-          { sale.totalPrice.toFixed(2).replace(/\./, ',') }
-        </h2>
       </section>
       <section>
-        <select
-          data-testid="customer_checkout__select-seller"
-          name="sellerId"
-          onChange={ handleChange }
-          onClick={ handleChange }
-        >
-          {sellers && sellers.map((seller) => (
-            <option
-              key={ seller.id }
-              value={ seller.id }
-            >
-              {seller.name}
-            </option>
-          ))}
+        <div className={ style.adress }>
+          <select
+            data-testid="customer_checkout__select-seller"
+            name="sellerId"
+            onChange={ handleChange }
+            onClick={ handleChange }
+          >
+            {sellers && sellers.map((seller) => (
+              <option
+                key={ seller.id }
+                value={ seller.id }
+              >
+                {seller.name}
+              </option>
+            ))}
 
-        </select>
-        <input
-          data-testid="customer_checkout__input-address "
-          type="text"
-          name="deliveryAddress"
-          onChange={ handleChange }
-        />
-        <input
-          data-testid="customer_checkout__input-addressNumber"
-          type="text"
-          name="deliveryNumber"
-          onChange={ handleChange }
-        />
-        <button
-          type="button"
-          data-testid="customer_checkout__button-submit-order"
-          onClick={ handleSubmit }
-        >
-          FINALIZAR PEDIDO
-        </button>
+          </select>
+          <input
+            data-testid="customer_checkout__input-address "
+            placeholder="Endereço de entrega"
+            type="text"
+            name="deliveryAddress"
+            onChange={ handleChange }
+          />
+          <input
+            data-testid="customer_checkout__input-addressNumber"
+            placeholder="Número de entrega"
+            type="text"
+            name="deliveryNumber"
+            onChange={ handleChange }
+          />
+          <h3
+            data-testid="customer_checkout__element-order-total-price"
+          >
+            Total: R$
+            { sale.totalPrice.toFixed(2).replace(/\./, ',') }
+          </h3>
+          <button
+            className={ style.finishOrder }
+            type="button"
+            data-testid="customer_checkout__button-submit-order"
+            onClick={ handleSubmit }
+          >
+            Finalizar Pedido
+          </button>
+        </div>
       </section>
     </>
 

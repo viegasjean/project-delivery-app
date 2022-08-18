@@ -1,0 +1,116 @@
+.cartContext{ 
+  display: flex;
+  margin: 50px auto;
+  justify-content: center;
+  flex-flow: row wrap;
+  gap: 70px;
+  width: 70%;
+}
+
+
+.cartItem{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    gap: 15px;
+    
+    border-radius: 15px;
+
+    background-color: #FFF;
+}
+
+.removeButton{
+  background-color: #da2a2a;
+  color: white;
+  
+  border: none;
+  border-radius: 10px;
+
+  
+  transition: 0.2s ease-in-out;
+
+  padding: 0.5em;
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+.cartContext h2{
+    color: #FFF;
+
+    color: white;
+    font-weight: bold;
+  
+    border: none;
+    border-radius: 5px;
+  
+    cursor: pointer;
+
+}
+
+.adress input{
+  background-color: #ffffff27;
+  color: #fff;
+  font-weight: bold;
+
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: none;
+  
+  outline: none;
+  margin: 10px 10px;
+}
+
+.adress{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.adress select{
+  background-color: #ffffff27;
+  color: #fff;
+  font-weight: bold;
+
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: none;
+  
+  outline: none;
+  margin: 10px 10px;
+}
+
+.adress h3 {
+  color: #FFF;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+
+.finishOrder{
+
+  background-color: #F03F5B;
+  color: white;
+  font-weight: bold;
+  
+  padding: 0.5em;
+
+  border: none;
+  border-radius: 5px;
+  
+  cursor: pointer;
+
+  transition: 0.2s ease-in-out;
+}
+
+.finishOrder:hover{
+  background-color: #F03F5B;
+  transform: scale(1.05);
+}
