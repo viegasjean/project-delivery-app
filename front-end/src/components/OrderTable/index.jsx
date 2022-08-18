@@ -1,16 +1,17 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import style from './style.module.css';
 
 function OrderTable({ orders, enableDelete = false, total }) {
   return (
     <table>
-      <thead>
+      <thead className={ style.tableHead }>
         <tr>
           <th>Item</th>
-          <th>descrição</th>
-          <th>quantidade</th>
-          <th>valor unitario</th>
-          <th>sub-total</th>
+          <th>Descrição</th>
+          <th>Quantidade</th>
+          <th>Valor unitário</th>
+          <th>Sub-total</th>
           {enableDelete && (
             <th>Remover item</th>
           )}
