@@ -27,7 +27,7 @@ function OrderDetail() {
   return (
     <>
       <Navbar />
-      <h1>Detalhe do pedido</h1>
+      <h1 className={ style.title }>Detalhe do pedido :</h1>
       <ul className={ style.saleHeader }>
         <li data-testid="customer_order_details__element-order-details-label-order-id">
           Pedido
@@ -37,11 +37,15 @@ function OrderDetail() {
         <li
           data-testid="customer_order_details__element-order-details-label-seller-name"
         >
+          Vendedor:
+          {' '}
           {orderData.seller.name}
         </li>
         <li
           data-testid="customer_order_details__element-order-details-label-order-date"
         >
+          Realizado em:
+          {' '}
           {new Date(orderData.saleDate).toLocaleDateString('pt-br')}
         </li>
         <li>
@@ -50,6 +54,8 @@ function OrderDetail() {
             data-testid={ 'customer_order_details__'
               + 'element-order-details-label-delivery-status' }
           >
+            Status:
+            {' '}
             {orderData.status}
           </label>
         </li>
