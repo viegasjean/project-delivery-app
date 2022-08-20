@@ -1,15 +1,15 @@
 .saleHeader {
+  color: white;
   display: grid;
+  font-size: 1.2rem;
+  font-weight: 700;
   grid-template-columns: repeat(5, 1fr);
   justify-items: center;
   list-style: none;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
   margin-bottom: 10px;
 }
 
-.title{
-  color: #fff;
+.title {
+  color: white;
   margin: 20px 70px;
 }

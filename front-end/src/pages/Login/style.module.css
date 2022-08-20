@@ -1,18 +1,18 @@
-body{
-  background-color: #23232D;
+body {
+  background-color: #23232d;
 }
 
 .container {
-  margin: 150px auto;
-  width: 300px;
-  background-color: #FAF9FF ;
-  padding: 25px;
+  background-color: #faf9ff;
   border-radius: 15px;
+  margin: 150px auto;
+  padding: 25px;
+  width: 300px;
 }
 
 .container h2 {
-  text-align: center;
   color: #555864;
+  text-align: center;
 }
 
 .container form {
@@ -23,59 +23,48 @@ body{
 }
 
 .container form label {
+  color: #555864;
   display: flex;
   flex-direction: column;
-  color: #555864;
   gap: 1px;
 }
 
 .container form label input {
-
   background-color: #5558641e;
-
-  padding: 0.5rem;
-  border-radius: 10px;
   border: none;
+  border-radius: 10px;
   outline: none;
+  padding: 0.5rem;
 }
 
-.buttonForm, .buttonRegister {
-  display: flex;
-  flex-direction: column;
+.buttonform, .buttonRegister {
   align-items: center;
-
-  background-color: #F03F5B;
-  color: #FAF9FF;
-
+  background-color: #f03f5b;
   border: none;
   border-radius: 10px;
-  padding: 0.5rem;
+  color: #faf9ff;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
   outline: none;
-
-  font-weight: bold;
-
+  padding: 0.5rem;
   transition: 0.2s ease-in-out;
 }
 
 .buttonRegister:hover {
-  cursor: pointer;
-
-  transform: scale(1.05);
   background-color: #f03f5abb;
-
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
-
-.buttonForm:hover {
-  cursor: pointer;
-
-  transform: scale(1.05);
+.buttonform:hover {
   background-color: #f03f5abb;
-
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
 .error {
-  color: #F03F5B;
+  color: #f03f5b;
   font-size: 0.8rem;
-  font-weight: bold;
-} 
+  font-weight: 700;
+}

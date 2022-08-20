@@ -1,116 +1,92 @@
-.cartContext{ 
+.cartContext {
   display: flex;
-  margin: 50px auto;
-  justify-content: center;
   flex-flow: row wrap;
   gap: 70px;
+  justify-content: center;
+  margin: 50px auto;
   width: 70%;
 }
 
-
-.cartItem{
-    display: flex;
-    flex-direction: column;
-    
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-    gap: 15px;
-    
-    border-radius: 15px;
-
-    background-color: #FFF;
+.cartItem {
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  padding: 30px;
 }
 
-.removeButton{
+.removeButton {
   background-color: #da2a2a;
+  border: none;
+  border-radius: 10px;
   color: white;
-  
-  border: none;
-  border-radius: 10px;
-
-  
-  transition: 0.2s ease-in-out;
-
-  padding: 0.5em;
   cursor: pointer;
-
-  font-weight: bold;
+  font-weight: 700;
+  padding: 0.5em;
+  transition: 0.2s ease-in-out;
 }
 
-.cartContext h2{
-    color: #FFF;
-
-    color: white;
-    font-weight: bold;
-  
-    border: none;
-    border-radius: 5px;
-  
-    cursor: pointer;
-
-}
-
-.adress input{
-  background-color: #ffffff27;
-  color: #fff;
-  font-weight: bold;
-
-  padding: 0.5rem;
-  border-radius: 10px;
+.cartContext h2 {
   border: none;
-  
-  outline: none;
-  margin: 10px 10px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
 }
 
-.adress{
+.adress input {
+  background-color: #ffffff27;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  margin: 10px;
+  outline: none;
+  padding: 0.5rem;
+}
+
+.adress {
   align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.adress select{
+.adress select {
   background-color: #ffffff27;
-  color: #fff;
-  font-weight: bold;
-
-  padding: 0.5rem;
-  border-radius: 10px;
   border: none;
-  
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  margin: 10px;
   outline: none;
-  margin: 10px 10px;
+  padding: 0.5rem;
 }
 
 .adress h3 {
-  color: #FFF;
-  font-weight: bold;
   border: none;
   border-radius: 5px;
+  color: white;
   cursor: pointer;
+  font-weight: 700;
   margin-right: 10px;
 }
 
-
-.finishOrder{
-
-  background-color: #F03F5B;
-  color: white;
-  font-weight: bold;
-  
-  padding: 0.5em;
-
+.finishOrder {
+  background-color: #f03f5b;
   border: none;
   border-radius: 5px;
-  
+  color: white;
   cursor: pointer;
-
+  font-weight: 700;
+  padding: 0.5em;
   transition: 0.2s ease-in-out;
 }
 
-.finishOrder:hover{
-  background-color: #F03F5B;
+.finishOrder:hover {
+  background-color: #f03f5b;
   transform: scale(1.05);
 }
