@@ -29,8 +29,19 @@ const saleByUserId = async (req, res, next) => {
   }
 };
 
+const saleBySellerId = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const response = await service.salesBySellerId(id);
+    return res.status(200).json(response);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   create,
   list,
   saleByUserId,
+  saleBySellerId,
 };
