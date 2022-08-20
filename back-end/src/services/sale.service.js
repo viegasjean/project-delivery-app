@@ -40,5 +40,5 @@ module.exports = {
   create,
   list,
   salesByUserId,
-  salesBySellerId
+  salesBySellerId,
 };
