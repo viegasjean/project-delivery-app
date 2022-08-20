@@ -91,6 +91,15 @@ const getSalesByCustomerId = async (id) => {
   }
 };
 
+const getSalesBySellerId = async (id) => {
+  try {
+    const { status, data } = await axios.get(`${url}/sale/listBySellerId/${id}`);
+    return { status, data };
+  } catch ({ response: { status, data } }) {
+    return { status, data };
+  }
+};
+
 module.exports = {
   login,
   register,
@@ -99,5 +108,6 @@ module.exports = {
   saveSale,
   saveSalesProducts,
   getSalesByCustomerId,
+  getSalesBySellerId,
   getSaleDetails,
 };

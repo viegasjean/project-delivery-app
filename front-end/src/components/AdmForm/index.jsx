@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import style from './style.module.css';
-import { adminRegisterSchema } from '../../utils/schemas';
 import { register } from '../../services/api';
 import { created } from '../../services/constants';
 import { getKey } from '../../services/localStorage';
+import { adminRegisterSchema } from '../../utils/schemas';
+import style from './style.module.css';
 
 function Form() {
   const [data, setData] = useState({
@@ -65,6 +65,7 @@ function Form() {
             name="name"
             id="name"
             value={ data.name }
+            placeholder="Nome"
           />
         </label>
         <label htmlFor="email">
@@ -75,6 +76,7 @@ function Form() {
             type="email"
             name="email"
             id="email"
+            placeholder="email"
             value={ data.email }
           />
         </label>
@@ -86,6 +88,7 @@ function Form() {
             type="password"
             name="password"
             id="password"
+            placeholder="senha"
             value={ data.password }
           />
         </label>
