@@ -59,6 +59,7 @@ function Navbar() {
         <button
           type="button"
           data-testid="customer_products__element-navbar-link-orders"
+          onClick={ () => history.push('/seller/orders') }
         >
           PEDIDOS
         </button>
