@@ -100,6 +100,19 @@ const getSalesBySellerId = async (id) => {
   }
 };
 
+const updateSaleStatus = async (id, saleStatus) => {
+  try {
+    const { status, data } = await axios
+      .put(
+        `${url}/sale/list/${id}`,
+        { status: saleStatus },
+      );
+    return { status, data };
+  } catch ({ response: { status, data } }) {
+    return { status, data };
+  }
+};
+
 module.exports = {
   login,
   register,
@@ -110,4 +123,5 @@ module.exports = {
   getSalesByCustomerId,
   getSalesBySellerId,
   getSaleDetails,
+  updateSaleStatus,
 };

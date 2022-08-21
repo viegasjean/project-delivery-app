@@ -8,6 +8,7 @@ import CustomerOrders from './pages/CustomerOrders/CustomerOrders';
 import Login from './pages/Login/Login';
 import Products from './pages/Products';
 import Register from './pages/Register/Register';
+import SellerOrdersDetail from './pages/SellerOrderDetail';
 import SellerOrders from './pages/SellerOrders/SellerOrders';
 
 function Routes() {
@@ -21,6 +22,7 @@ function Routes() {
       <Route exact path="/customer/orders" component={ CustomerOrders } />
       <Route exact path="/customer/orders/:id" component={ CustomerOrderDetail } />
       <Route exact path="/seller/orders" component={ SellerOrders } />
+      <Route exact path="/seller/orders/:id" component={ SellerOrdersDetail } />
       <Route exact path="/admin/manage" component={ Admin } />
       <CartProvider>
         <Route exact path="/customer/products" component={ Products } />

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
-import OrderTable from '../../components/OrderTable';
-import { getSaleDetails } from '../../services/api';
+import OrderTable from '../../components/OrderTableSeller';
+import { getSaleDetails, updateSaleStatus } from '../../services/api';
 import style from './style.module.css';
 
 function OrderDetail() {
   const [orderData, setOrderData] = useState();
-  const [deliveryButton, setDeliveryButton] = useState(true);
   const params = useParams();
 
   const fetchSaleDetail = async () => {
@@ -17,7 +16,7 @@ function OrderDetail() {
 
   useEffect(() => {
     fetchSaleDetail();
-  }, []);
+  }, [orderData]);
 
   if (!orderData) {
     return (
@@ -25,25 +24,29 @@ function OrderDetail() {
     );
   }
 
+  const prepare = () => {
+    updateSaleStatus(params.id, 'Preparando');
+    fetchSaleDetail();
+  };
+
+  const dispatch = () => {
+    updateSaleStatus(params.id, 'Em Trânsito');
+    setPrepareButton(true);
+    setDispatchButton(true);
+  };
+
   return (
     <>
       <Navbar />
       <h1 className={ style.title }>Detalhe do pedido :</h1>
       <ul className={ style.saleHeader }>
-        <li data-testid="customer_order_details__element-order-details-label-order-id">
+        <li data-testid="seller_order_details__element-order-details-label-order-id">
           Pedido
           {' '}
           {String(orderData.id).padStart(Number('4'), '0')}
         </li>
         <li
-          data-testid="customer_order_details__element-order-details-label-seller-name"
-        >
-          Vendedor:
-          {' '}
-          {orderData.seller.name}
-        </li>
-        <li
-          data-testid="customer_order_details__element-order-details-label-order-date"
+          data-testid="seller_order_details__element-order-details-label-order-date"
         >
           Realizado em:
           {' '}
@@ -52,7 +55,7 @@ function OrderDetail() {
         <li>
           <label
             htmlFor="deliveryCheck"
-            data-testid={ 'customer_order_details__'
+            data-testid={ 'seller_order_details__'
               + 'element-order-details-label-delivery-status' }
           >
             Status:
@@ -62,12 +65,22 @@ function OrderDetail() {
         </li>
         <li>
           <button
-            name="deliveryCheck"
-            data-testid="customer_order_details__button-delivery-check"
+            name="preparingCheck"
+            data-testid="seller_order_details__button-preparing-check"
             type="button"
-            disabled={ deliveryButton }
+            onClick={ () => prepare() }
+            disabled={ orderData.status !== 'Pendente' }
           >
-            Marcar como entregue
+            PREPARAR
+          </button>
+          <button
+            name="dispatchCheck"
+            data-testid="seller_order_details__button-dispatch-check"
+            type="button"
+            onClick={ dispatch }
+            disabled={ orderData.status !== 'Preparando' }
+          >
+            DESPACHAR
           </button>
         </li>
       </ul>
