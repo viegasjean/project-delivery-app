@@ -31,8 +31,7 @@ function OrderDetail() {
 
   const dispatch = () => {
     updateSaleStatus(params.id, 'Em Trânsito');
-    setPrepareButton(true);
-    setDispatchButton(true);
+    fetchSaleDetail();
   };
 
   return (

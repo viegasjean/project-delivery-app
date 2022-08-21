@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import OrderTable from '../../components/OrderTable';
-import { getSaleDetails } from '../../services/api';
+import { getSaleDetails, updateSaleStatus } from '../../services/api';
 import style from './style.module.css';
 
 function OrderDetail() {
   const [orderData, setOrderData] = useState();
-  const [deliveryButton, setDeliveryButton] = useState(true);
   const params = useParams();
 
   const fetchSaleDetail = async () => {
@@ -17,13 +16,18 @@ function OrderDetail() {
 
   useEffect(() => {
     fetchSaleDetail();
-  }, []);
+  }, [orderData]);
 
   if (!orderData) {
     return (
       <span>Loading...</span>
     );
   }
+
+  const receive = () => {
+    updateSaleStatus(params.id, 'Entregue');
+    fetchSaleDetail();
+  };
 
   return (
     <>
@@ -65,7 +69,8 @@ function OrderDetail() {
             name="deliveryCheck"
             data-testid="customer_order_details__button-delivery-check"
             type="button"
-            disabled={ deliveryButton }
+            disabled={ orderData.status !== 'Em Trânsito' }
+            onClick={ receive }
           >
             Marcar como entregue
           </button>
