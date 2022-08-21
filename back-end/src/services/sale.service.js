@@ -37,9 +37,9 @@ const salesBySellerId = async (sellerId) => {
 };
 
 const updateStatus = async (id, status) => {
-  const edited = await model.update({ status }, {where: { id }})
+  const edited = await model.update({ status }, { where: { id } });
   return edited;
-}
+};
 
 module.exports = {
   create,

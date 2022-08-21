@@ -42,7 +42,7 @@ const saleBySellerId = async (req, res, next) => {
 const updateStatus = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { status } =  req.body;
+    const { status } = req.body;
     const response = await service.updateStatus(id, status);
     return res.status(200).json(response);
   } catch (error) {
