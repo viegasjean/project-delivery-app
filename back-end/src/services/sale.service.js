@@ -36,9 +36,15 @@ const salesBySellerId = async (sellerId) => {
   return found;
 };
 
+const updateStatus = async (id, status) => {
+  const edited = await model.update({ status }, {where: { id }})
+  return edited;
+}
+
 module.exports = {
   create,
   list,
   salesByUserId,
   salesBySellerId,
+  updateStatus,
 };

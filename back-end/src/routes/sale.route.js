@@ -9,5 +9,6 @@ routes.get('/listBySellerId/:id', controller.saleBySellerId);
 
 routes.post('/save', controller.create);
 routes.get('/list/:id', controller.list);
+routes.put('/list/:id', controller.updateStatus);
 
 module.exports = routes;
